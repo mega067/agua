@@ -7,18 +7,51 @@ body {
     background-color: #f4f4f4;
     color: #333;
 }
-
+h1{
+    color: rgb(4, 0, 255);
+}
 header {
-    background-color: #333;
+    background-color: #00aeff;
     color: #fff;
     padding: 1em;
     text-align: center;
 }
+.padre2{
+    justify-content: center;
+    
 
-main {
+    align-items: center;
+}
+.divIMG{
+
+    justify-content: center;
+   
+    display: flex;
+    align-items: center;
+}
+.div2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+.img1{
+
+    border-radius: 100px;
+    align-items: center;
+    width: 45%;
+
+}
+.main2{
+    align-items: center;
+    background-color: rgb(237 246 251);
+}
+main{
     padding: 2em;
 }
-
+h2{
+    font-size: 60px;
+}
 footer {
     background-color: #333;
     color: #fff;
