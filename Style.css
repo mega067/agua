@@ -53,14 +53,44 @@ h2{
     font-size: x-large;
 }
 footer {
+    
     background-color: #231f20;
     color: #fff;
-    padding: 1em;
-    text-align: center;
+   
+ 
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 .git{
+    justify-content: center;
+    align-items: center;
     width: 10%;
+}
+
+.iconW{
+
+    justify-content: end;
+    display: flex;
+    background-color: #231f20;
+
+    
+}
+
+.divTXT{
+
+
+    
+    justify-content: center;
+    display: flex;
+    
+}
+.IMGW{
+    left: 100%;
+    width: 40%;
+}
+.divFooter{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
