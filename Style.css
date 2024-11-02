@@ -53,6 +53,11 @@ h2{
     font-size: x-large;
 }
 footer {
+    margin-top: 5%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     
     background-color: #231f20;
     color: #fff;
@@ -65,11 +70,12 @@ footer {
 .git{
     justify-content: center;
     align-items: center;
-    width: 10%;
+    width: 20%;
 }
 
 .iconW{
-
+    
+    align-items: center;
     justify-content: end;
     display: flex;
     
@@ -80,13 +86,13 @@ footer {
 .divTXT{
 
 
-    
-    justify-content: center;
+    align-items: center;
+    justify-content: end;
     display: flex;
     
 }
 .IMGW{
-    left: 100%;
+
     width: 30%;
 }
 .divFooter{
