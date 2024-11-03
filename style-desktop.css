@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+h1{
+    color: rgb(4, 0, 255);
+}
+header {
+    justify-content: center;
+    align-items: center;
+    background-color: #00aeff;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+.padre2{
+    display: flex;
+    justify-content: center;
+    
+
+    align-items: center;
+}
+.divIMG{
+
+    justify-content: center;
+   
+    display: flex;
+    align-items: center;
+}
+.div2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+.img1{
+
+    border-radius: 10%;
+    align-items: center;
+    width: 50%;
+
+}
+.main2{
+    align-items: center;
+    background-color: rgb(237 246 251);
+}
+main{
+    padding: 2em;
+}
+h2{
+    font-size: 40px;
+}
+footer {
+    margin-top: 5%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    background-color: #231f20;
+    color: #fff;
+   
+ 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.git{
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.iconW{
+    
+    align-items: center;
+    justify-content: end;
+    display: flex;
+    
+
+    
+}
+
+.divTXT{
+
+
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    
+}
+.IMGW{
+
+    width: 50%;
+}
+.divFooter{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+title{
+    justify-content: center;
+    align-items: center;
+}
+.DTXT{
+    font-size: 20px;
+}

@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Verifica si el ancho de la pantalla es menor a 768px (usualmente un teléfono)
+            if (window.innerWidth < 768) {
+                document.getElementById("estilo").href = "Style.css";
+            } else {
+                document.getElementById("estilo").href = "style-desktop.css";
+            }
+        });
+    </script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGUA SANTA</title>
     <!-- Enlace a tu archivo CSS -->
-    <link rel="stylesheet" href="Style.css">
+    <link id="estilo" rel="stylesheet" href="Style.css">
 </head>
 <body>
     <header>
@@ -51,7 +61,7 @@
             <div class="imggit">
                 <a href="https://github.com/mega067" class="git" target="_blank">            
                     <img class="git" src="https://github.githubassets.com/assets/apple-touch-icon-144x144-b882e354c005.png" title="git">
-                    <div>desarrollador</div>
+                    <div class="DTXT">desarrollador</div>
                 </a>    
             </div>
         </div>
