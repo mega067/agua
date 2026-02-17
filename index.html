@@ -1,36 +1,175 @@
-<!DOCTYPE html>
-<html lang="es">
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Verifica si el ancho de la pantalla es menor a 768px (usualmente un teléfono)
-            if (window.innerWidth < 768) {
-                document.getElementById("estilo").href = "Style.css";
-            } else {
-                document.getElementById("estilo").href = "style-desktop.css";
-            }
-        });
-    </script>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGUA SANTA</title>
-    <!-- Enlace a tu archivo CSS -->
-    <link id="estilo" rel="stylesheet" href="Style.css">
-</head>
-<body>
-    <header>
-        <div class="divTXT">
-            <div class="titulos">
-                <h1>Agua Santa</h1>
-                <h1>Tuxpan.Ver</h1>
-            </div>
-            <div class="iconW">
-    <a class="iconW" href="https://wa.me/7831455440" target="_blank">
-        <img class="IMGW" src="icons8-whatsapp.svg" alt="WhatsApp">
-    </a>
-</div>
+import React, { useState } from 'react';
+import { ChevronDown, ChevronRight, BookOpen, BarChart3, Building2, Users, CheckCircle2, ShieldCheck } from 'lucide-react';
 
+const App = () => {
+  const [expandedNodes, setExpandedNodes] = useState({
+    root: true,
+    contabilidad: true,
+    infoFinanciera: true,
+    organizaciones: true
+  });
+
+  const toggleNode = (id) => {
+    setExpandedNodes(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const ConceptNode = ({ id, title, icon: Icon, color, children, details }) => {
+    const isExpanded = expandedNodes[id];
+    return (
+      <div className="flex flex-col items-center w-full my-4">
+        <button
+          onClick={() => toggleNode(id)}
+          className={`flex items-center gap-3 p-4 rounded-xl shadow-md transition-all border-2 ${
+            isExpanded ? color.bg + ' ' + color.border : 'bg-white border-gray-200'
+          } hover:shadow-lg min-w-[280px] z-10`}
+        >
+          <div className={`p-2 rounded-lg ${color.iconBg}`}>
+            <Icon size={24} className={color.iconText} />
+          </div>
+          <div className="flex-1 text-left">
+            <h3 className="font-bold text-gray-800 leading-tight">{title}</h3>
+            {details && <p className="text-xs text-gray-500 mt-1">{details}</p>}
+          </div>
+          {isExpanded ? <ChevronDown size={20} className="text-gray-400" /> : <ChevronRight size={20} className="text-gray-400" />}
+        </button>
+
+        {isExpanded && children && (
+          <div className="relative mt-4 flex flex-col items-center w-full">
+            {/* Vertical Line */}
+            <div className="absolute top-[-16px] w-0.5 h-4 bg-gray-300"></div>
+            <div className="flex flex-wrap justify-center gap-8 w-full px-4">
+              {children}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const SubNode = ({ title, items, color }) => (
+    <div className={`p-4 rounded-lg border ${color.bg} ${color.border} shadow-sm w-64`}>
+      <h4 className={`font-semibold mb-2 text-sm uppercase tracking-wider ${color.text}`}>{title}</h4>
+      <ul className="space-y-1">
+        {items.map((item, idx) => (
+          <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+            <div className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${color.bullet}`} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-slate-50 p-8 font-sans">
+      <div className="max-w-6xl mx-auto">
+        <header className="text-center mb-12">
+          <h1 className="text-4xl font-extrabold text-slate-800 mb-2">Fundamentos de Contabilidad</h1>
+          <p className="text-slate-500">Mapa Conceptual basado en la investigación proporcionada</p>
+        </header>
+
+        <div className="flex flex-col items-center">
+          {/* Main Title Node */}
+          <ConceptNode 
+            id="root" 
+            title="SISTEMA CONTABLE Y ORGANIZACIONAL" 
+            icon={ShieldCheck}
+            color={{
+              bg: 'bg-indigo-50',
+              border: 'border-indigo-200',
+              iconBg: 'bg-indigo-100',
+              iconText: 'text-indigo-600'
+            }}
+            details="Estructura básica de la disciplina financiera"
+          >
+            {/* 1.1 Concepto de Contabilidad */}
+            <ConceptNode
+              id="contabilidad"
+              title="1.1 Concepto de Contabilidad"
+              icon={BookOpen}
+              color={{
+                bg: 'bg-emerald-50',
+                border: 'border-emerald-200',
+                iconBg: 'bg-emerald-100',
+                iconText: 'text-emerald-600'
+              }}
+              details="Lenguaje de los negocios"
+            >
+              <SubNode 
+                title="Funciones" 
+                color={{ bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-800', bullet: 'bg-emerald-500' }}
+                items={["Registro de operaciones", "Clasificación de cuentas", "Resumen e informes", "Control y planeación"]}
+              />
+              <SubNode 
+                title="Propósito" 
+                color={{ bg: 'bg-emerald-50', border: 'border-emerald-100', text: 'text-emerald-800', bullet: 'bg-emerald-500' }}
+                items={["Información confiable", "Control de transacciones", "Toma de decisiones", "Transparencia legal"]}
+              />
+            </ConceptNode>
+
+            {/* 1.2 Información Financiera */}
+            <ConceptNode
+              id="infoFinanciera"
+              title="1.2 Información Financiera"
+              icon={BarChart3}
+              color={{
+                bg: 'bg-amber-50',
+                border: 'border-amber-200',
+                iconBg: 'bg-amber-100',
+                iconText: 'text-amber-600'
+              }}
+              details="Objetivo, Características y Usuarios"
+            >
+              <SubNode 
+                title="Características" 
+                color={{ bg: 'bg-amber-50', border: 'border-amber-100', text: 'text-amber-800', bullet: 'bg-amber-500' }}
+                items={["Relevancia", "Fiabilidad", "Comparabilidad", "Oportunidad", "Comprensibilidad"]}
+              />
+              <SubNode 
+                title="Usuarios" 
+                color={{ bg: 'bg-amber-50', border: 'border-amber-100', text: 'text-amber-800', bullet: 'bg-amber-500' }}
+                items={["Internos: Gerentes y Directivos", "Externos: Inversionistas", "Acreedores y Bancos", "Autoridades Fiscales"]}
+              />
+            </ConceptNode>
+
+            {/* 1.3 Formas de Organización */}
+            <ConceptNode
+              id="organizaciones"
+              title="1.3 Organización de Entidades"
+              icon={Building2}
+              color={{
+                bg: 'bg-blue-50',
+                border: 'border-blue-200',
+                iconBg: 'bg-blue-100',
+                iconText: 'text-blue-600'
+              }}
+              details="Clasificación por diversos criterios"
+            >
+              <SubNode 
+                title="Según Fines y Capital" 
+                color={{ bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-800', bullet: 'bg-blue-500' }}
+                items={["Lucrativas vs No Lucrativas", "Gubernamentales", "Públicas, Privadas y Mixtas"]}
+              />
+              <SubNode 
+                title="Estructura y Actividad" 
+                color={{ bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-800', bullet: 'bg-blue-500' }}
+                items={["Societaria (SA, SRL, etc.)", "Industrial / Extractiva", "Comercial / Servicios"]}
+              />
+              <SubNode 
+                title="Por Tamaño" 
+                color={{ bg: 'bg-blue-50', border: 'border-blue-100', text: 'text-blue-800', bullet: 'bg-blue-500' }}
+                items={["Micro (1-10)", "Pequeña (11-50)", "Mediana (51-250)", "Gran Empresa (>250)"]}
+              />
+            </ConceptNode>
+          </ConceptNode>
         </div>
-        
-    </header>
-    <main class="main2" >
+
+        <footer className="mt-16 text-center text-slate-400 text-sm italic">
+          Haz clic en los nodos para expandir o contraer las secciones.
+        </footer>
+      </div>
+    </div>
+  );
+};
+
+export default App;
